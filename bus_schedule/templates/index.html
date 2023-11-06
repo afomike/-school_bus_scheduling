@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Input Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px auto;
+            max-width: 800px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background-color: #f9f9f9;
+            padding: 20px ;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+        }
+
+        input[type="time"], select {
+            width: 100%;
+            padding: 15px 10px;
+            margin: 5px 0 20px 0;
+            box-sizing: border-box;
+            outline: none;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Time Scheduling Model For Buses In Federal University Lokoja  </h1>
+    <form action="/predict" method="post">
+        Arrival Time: <input required type="time" name="Arrival_Time"><br>
+        Days: 
+        <select name="Days" required>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <!-- <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option> -->
+        </select><br>
+        Departure Point:
+        <select required name="Departure_Point">
+            <option value="Felele">Felele</option>
+            <option value="Crusher Road">Adankolo</option>
+        </select><br>
+        Bus Route: 
+        <select required name="Bus_Route">
+            <option value="Felele Road">Felele Road</option>
+            <option value="Crusher Road">Crusher Road</option>
+        </select><br>
+        Arrival Point: 
+        <select required name="Arrival_Point">
+            <option value="faculty of science">faculty of science</option>
+            <!-- <option value="engineering building">engineering building</option> -->
+        </select><br>
+        
+        <input type="submit" value="Schedule">
+        
+    </form>
+
+    {% if predicted_class %}
+        <h2>You're scheduled to the bus taking off by: {{ predicted_class }}</h2>
+    {% endif %}
+</body>
+</html>
